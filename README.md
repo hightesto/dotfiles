@@ -1,6 +1,6 @@
 my dotfiles for (black)arch linux
 
-installation:
+installation (not working yet:
 =
 - clone the repo
 `git clone https://github.com/hightesto/dotfiles/`
