@@ -6,9 +6,9 @@ installation (not working yet:
 `git clone https://github.com/hightesto/dotfiles/`
 - cd into it
 `cd dotfiles`
-make the installer executable
+- make the installer executable
 `chmod +x installer.sh`
-run the installer
+- run the installer
 `sudo ./installer.sh`
 
 dependencies:
