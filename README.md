@@ -18,3 +18,21 @@ dependencies:
 - oblogout
 - xtrlock
 - playerctl
+- scrot
+- dex (optional)
+- nitrogen
+- xset
+- xscreensaver (optional)
+- dunst
+- xrandr
+- arandr (to edit monitor.sh and change monitor layout)
+- blueberry-tray
+- [Monocraft](https://github.com/IdreesInc/Monocraft) 
+
+other things:
+=
+edit the # system tray # in the `~/.config/i3/config` and change the `exec xrandr --output eDP-1 --primary` if u are not on a laptop
+
+credits:
+=
+scrips in `~/.config/i3/scripts/` (except `toggle_touchpad`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
