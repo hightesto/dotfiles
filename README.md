@@ -2,7 +2,14 @@ my dotfiles for (black)arch linux
 
 installation:
 =
-run install.sh
+- clone the repo
+`git clone https://github.com/hightesto/dotfiles/`
+- cd into it
+`cd dotfiles`
+make the installer executable
+`chmod +x installer.sh`
+run the installer
+`sudo ./installer.sh`
 
 dependencies:
 =
@@ -27,7 +34,9 @@ dependencies:
 - xrandr
 - arandr (to edit monitor.sh and change monitor layout)
 - blueberry-tray
-- [Monocraft](https://github.com/IdreesInc/Monocraft) 
+- [Monocraft](https://github.com/IdreesInc/Monocraft)
+- rofi
+- dmenu (optional)
 
 other things:
 =
