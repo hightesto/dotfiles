@@ -563,7 +563,7 @@ strip_workspace_numbers yes
 # #08052be6 --> e6=90%
 
 # bar {
-#	font pango: Noto Sans Regular 10
+#	font pango: Monocraft Regular 10
 #	status_command i3blocks -c ~/.config/i3/i3blocks-2.conf
 #	i3bar_command i3bar --transparency
 #	output HDMI-0
@@ -599,8 +599,8 @@ bindsym $mod+d exec rofi -show drun
 
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
-#bindsym F9 exec rofi -modi drun -show drun \
-#		-config ~/.config/rofi/rofidmenu.rasi
+bindsym F9 exec rofi -modi drun -show drun \
+		-config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
