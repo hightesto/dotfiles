@@ -44,4 +44,5 @@ edit the # system tray # in the `~/.config/i3/config` and change the `exec xrand
 
 credits:
 =
-scrips in `~/.config/i3/scripts/` (except `toggle_touchpad`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
+- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
+- [polybar windows by jiriklepl](https://github.com/jiriklepl/light-polybar-windows)
