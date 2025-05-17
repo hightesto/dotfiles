@@ -40,9 +40,9 @@ dependencies:
 
 other things:
 =
-edit the # system tray # in the `~/.config/i3/config` and change the `exec xrandr --output eDP-1 --primary` if u are not on a laptop
+edit the # system tray # in the `~/.config/i3/config` and change the primary display (`exec xrandr --output eDP-1 --primary`) to your display (e.g. HDMI-1 instead of eDP-1)
 
 credits:
 =
-- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
+- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh` and `start_polybar.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
 - [polybar windows by jiriklepl](https://github.com/jiriklepl/light-polybar-windows)
