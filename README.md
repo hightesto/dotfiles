@@ -21,22 +21,27 @@ dependencies:
 - gnome-polkit
 - brightnessctl
 - networkmanager
-- xss-lock (optional)
 - oblogout
 - xtrlock
 - playerctl
 - scrot
-- dex (optional)
 - nitrogen
 - xset
-- xscreensaver (optional)
 - dunst
 - xrandr
 - arandr (to edit monitor.sh and change monitor layout)
 - blueberry-tray
 - [Monocraft](https://github.com/IdreesInc/Monocraft)
 - rofi
-- dmenu (optional)
+
+optional but cool:
+=
+- dex
+- xscreensaver
+- xss-lock
+- xfce4-clipman-plugin
+- xfce4-notes-plugin
+- if you use thunar: gfvs, thunar-volman
 
 other things:
 =
