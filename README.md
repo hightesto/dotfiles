@@ -17,7 +17,7 @@ dependencies:
 - i3blocks
 - [i3-auto-layout](https://github.com/chmln/i3-auto-layout)
 - optionally i3lock
-- [picom](https://github.com/FT-Labs/picom) (AUR: picom-ftlabs-git)
+- [picom (from pijulius so it has animations)](https://github.com/pijulius/picom) (AUR: picom-pijulius-next-git)
 - gnome-polkit
 - brightnessctl
 - networkmanager
