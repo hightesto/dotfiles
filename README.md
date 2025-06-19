@@ -1,4 +1,4 @@
-my dotfiles for (black)arch linux
+My dotfiles for (Black)Arch Linux
 
 installation (not working yet:
 =
@@ -16,13 +16,11 @@ dependencies:
 - i3-wm (with i3-gaps)
 - i3blocks
 - [i3-auto-layout](https://github.com/chmln/i3-auto-layout)
-- optionally i3lock
-- [picom (from pijulius so it has animations)](https://github.com/pijulius/picom) (AUR: picom-pijulius-next-git)
+- [picom (from FT-Labs so it has animations)](https://github.com/ft-labs/picom) (AUR: picom-ftlabs-git)
 - gnome-polkit
 - brightnessctl
 - networkmanager
 - oblogout
-- xtrlock
 - playerctl
 - scrot
 - nitrogen
@@ -31,17 +29,19 @@ dependencies:
 - xrandr
 - arandr (to edit monitor.sh and change monitor layout)
 - blueberry-tray
-- [Monocraft](https://github.com/IdreesInc/Monocraft)
-- rofi
+- [Monocraft](https://github.com/IdreesInc/Monocraft) (or change the font in the i3 config)
+- rofi (alternatively dmenu)
 
 optional but cool:
 =
 - dex
 - xscreensaver
 - xss-lock
+- xtrlock
 - xfce4-clipman-plugin
 - xfce4-notes-plugin
 - if you use thunar: gfvs, thunar-volman
+- i3lock
 
 other things:
 =
@@ -49,5 +49,4 @@ edit the # system tray # in the `~/.config/i3/config` and change the primary dis
 
 credits:
 =
-- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh` and `start_polybar.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
-- [polybar windows by jiriklepl](https://github.com/jiriklepl/light-polybar-windows)
+- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh` and `start_polybar.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me
