@@ -18,23 +18,23 @@ dependencies:
 - [i3-auto-layout](https://github.com/chmln/i3-auto-layout)
 - [picom (from FT-Labs so it has animations)](https://github.com/ft-labs/picom) (AUR: picom-ftlabs-git)
 - gnome-polkit
-- brightnessctl
-- networkmanager
-- oblogout
 - playerctl
-- scrot
 - nitrogen
-- xset
 - dunst
 - xrandr
-- arandr (to edit monitor.sh and change monitor layout)
-- blueberry-tray
 - [Monocraft](https://github.com/IdreesInc/Monocraft) (or change the font in the i3 config)
 - rofi (alternatively dmenu)
 
 optional but cool:
 =
+- arandr (to edit monitor.sh and change monitor layout)
+- blueberry-tray
+- oblogout (for a nice logout menu)
+- scrot (for screenshots)
+- networkmanager
+- brightnessctl (if you have a laptop)
 - dex
+- xset
 - xscreensaver
 - xss-lock
 - xtrlock
