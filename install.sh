@@ -40,34 +40,18 @@ fi
 
 if ! command -v nitrogen >/dev/null 2>&1
 then
-    echo "nitrogen could not be found"
-    if ! command -v feh >/dev/null 2>&1
-    then
-        echo "feh could not be found"
-#       exit 1
-    fi
-#    exit 1
+   echo "feh could not be found"
 fi
 
 if ! command -v xrandr >/dev/null 2>&1
 then
-    echo "nitrogen could not be found"
-    if ! command -v feh >/dev/null 2>&1
-    then
-        echo "xrandr could not be found"
-#       exit 1
-    fi
+    echo "xrandr could not be found"
 #    exit 1
 fi
 
 if ! command -v xset >/dev/null 2>&1
 then
     echo "nitrogen could not be found"
-    if ! command -v feh >/dev/null 2>&1
-    then
-        echo "xset could not be found"
-#       exit 1
-    fi
 #    exit 1
 fi
 
