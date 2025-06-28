@@ -292,10 +292,6 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 # Multimedia Keys
 
 # volume
-# use meta keys without showing osc
-#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
-#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
-# use meta keys showing osc using dunst
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
 
@@ -304,8 +300,6 @@ bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill 
 bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 
 # mute
-#bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
-# use meta keys showing osc using dunst
 bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
 
 # mic mute toggle
@@ -325,9 +319,6 @@ bindsym Pause exec playerctl play-pause
 bindsym $mod+w exec vivaldi
 bindsym Print exec scrot ~/Bilder/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
 bindsym $mod+v exec vlc
-
-# Power Profiles menu switcher (rofi)
-#bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profilesborder
 
 ##########################################
 # configuration for workspace behaviour: #
@@ -371,11 +362,9 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 #exec --no-startup-id dex -a -s /etc/xdg/autostart/:~/.config/autostart/
 exec --no-startup-id dex --autostart --environment i3
 
-# start welcome app
-#exec --no-startup-id sh /usr/share/endeavouros/scripts/welcome --startdelay=3 
-
 # num lock activated
 #exec --no-startup-id numlockx on
+# i have mine default on on by sddm
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
