@@ -6,6 +6,7 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
+# font must be in /usr/share/fonts
 font pango: Monocraft Regular 10
 
 # set the mod key to the winkey:
@@ -37,17 +38,16 @@ workspace_layout default
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
-# some keybindings
-bindsym $mod+Escape exec oblogout
-bindsym $mod+F8 exec systemctl suspend
-
 # mouse cursor with x
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id export XCURSOR_SIZE=16
 exec --no-startup-id export XCURSOR_THEME=Adwaita
 
-# auto tiling and layout
+# auto tiling and layout (pretty cool)
 exec_always --no-startup-id i3-auto-layout
+
+# xclickroot
+exec --no-startup-id xclickroot -r jgmenu_run
 
 ##############################
 # extra options for windows: #
@@ -60,7 +60,7 @@ new_window pixel 0
 #shide_edge_borders both
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 8
 gaps outer 0
 
 # show window title bars (not officially supported with i3gaps)
@@ -173,29 +173,35 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-######################################
-# keybindings for different actions: #
-######################################
+###############
+# keybindings #
+###############
 
 # start a terminal
 bindsym $mod+Return exec xfce4-terminal
 
 # open a file explorer
-bindsym $mod+e exec dolphin
+bindsym $mod+e exec thunar
+# install gvfs, gvfs-mtp, thunar-volman, thunar-media-tags-plugin, thunar-archive-plugin packages for best experience
+
+bindsym $mod+m exec multimc
 
 # open i3 config file with Visual Studio Code OSS
-bindsym $mod+i exec code-oss /home/vornberger/.config/i3/config
+bindsym $mod+i exec code-oss ~/.config/i3/config
 
 # open i3blocks config file with Visual Studio Code OSS
-bindsym $mod+Shift+i exec code-oss /home/vornberger/.config/i3/i3blocks.conf
+bindsym $mod+Shift+i exec code-oss ~/.config/i3/i3blocks.conf
 
 # kill focused window
 bindsym $mod+q kill
 bindsym $mod+Shift+q kill
 
-# exit-menu
-#bindsym $mod+Shift+e exec ~/.config/i3/scripts/powermenu
+# logout and stuff
+bindsym $mod+Escape exec oblogout
+bindsym $mod+F8 exec systemctl suspend
 
+# jgmenu
+bindsym $mod+j exec --no-startup-id jgmenu_run
 
 # Lock the system
 # lock with a picture:
@@ -210,7 +216,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # keybinding in fancy rofi (automated):
-bindsym F1 exec ~/.config/i3/scripts/keyhint-2
+bindsym $mod+F1 exec ~/.config/i3/scripts/keyhint-2
 # alternative
 # keybinding list in editor:
 # bindsym $mod+F1 exec xed ~/.config/i3/keybindings
@@ -225,43 +231,50 @@ bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/volume_brightness.sh bri
 # toggle touchpad
 bindsym $mod+Shift+Escape exec ~/.config/i3/scripts/toggle_touchpad.sh
 
+# kdocker to minimize apps to tray
+bindsym $mod+N exec --no-startup-id kdocker
+
 # change focus
-bindsym $mod+j focus left
-bindsym $mod+k focus down
-bindsym $mod+b focus up
-bindsym $mod+o focus right
+# who tf needs this (except multi-window vim users)
+#bindsym $mod+j focus left
+#bindsym $mod+k focus down
+#bindsym $mod+b focus up
+#bindsym $mod+o focus right
 
 # alternatively, you can use the cursor keys:
+# i mean this is way better
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # move focused window
-bindsym $mod+Shift+j move left
-bindsym $mod+Shift+k move down
-bindsym $mod+Shift+b move up
-bindsym $mod+Shift+o move right
+# also who tf needs this
+#bindsym $mod+Shift+j move left
+#bindsym $mod+Shift+k move down
+#bindsym $mod+Shift+b move up
+#bindsym $mod+Shift+o move right
 
 # alternatively, you can use the cursor keys:
+# also better
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+#bindsym $mod+h split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+#bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+d layout default
-bindsym $mod+s layout stacking
-bindsym $mod+g layout tabbed
+#bindsym $mod+s layout stacking
+#bindsym $mod+g layout tabbed
 #bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -299,17 +312,19 @@ bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightnes
 bindsym XF86AudioMicMute exec amixer sset Capture toggle
 
 # audio control
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+#bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
+bindsym Pause exec playerctl play-pause
 
 # Redirect sound to headphones
-bindsym $mod+p exec /usr/local/bin/switch-audio-port
+#bindsym $mod+p exec /usr/local/bin/switch-audio-port
 
 ## App shortcuts
 bindsym $mod+w exec vivaldi
-bindsym Print exec scrot ~/Pictures/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym Print exec scrot ~/Bilder/Screenshots/%Y-%m-%d-%T-screenshot.png && notify-send "Screenshot saved to ~/Pictures/Screenshots/$(date +"%Y-%m-%d-%T")-screenshot.png"
+bindsym $mod+v exec vlc
 
 # Power Profiles menu switcher (rofi)
 #bindsym $mod+Shift+p exec ~/.config/i3/scripts/power-profilesborder
@@ -340,38 +355,6 @@ set $ws10 "10"
 #workspace $ws4 output HDMI-0
 #workspace $ws5 output HDMI-0
 
-#####################
-# compositor: picom #
-#####################
-
-# transparency
-# uncomment one of them to be used
-# options could need changes, related to used GPU and drivers.
-# to find the right setting consult the archwiki or ask at the forum.
-#
-# xcompmgr: https://wiki.archlinux.org/title/Xcompmgr
-# manpage: https://man.archlinux.org/man/xcompmgr.1.en
-# install xcompmgr package to use it (yay -S xcompmgr)
-#exec --no-startup-id xcompmgr -C -n &
-# or an more specialized config like this:
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
-#
-# or:
-#
-# picom: https://wiki.archlinux.org/title/Picom
-# manpage: https://man.archlinux.org/man/picom.1.en
-# The default configuration is available in /etc/xdg/picom.conf 
-# For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
-# install picom package (yay -S picom)
-
-# picom by ftlabs (so it has animations):
-# https://github.com/FT-Labs/picom
-
-# start using default config 
-exec_always --no-startup-id picom --animations -b
-
-# for custom config:
-#exec_always --no-startup-id picom --config  ~/.config/picom.conf
 
 #############################################
 # autostart applications/services on login: #
@@ -406,7 +389,7 @@ exec_always --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 exec_always --no-startup-id sleep 2 && nitrogen --restore
-#exec --no-startup-id sleep 1 && feh --bg-scale /home/vornberger/Pictures/Hintergrundbilder/Arch1.jpg
+#exec --no-startup-id sleep 1 && feh --bg-scale ~/Bilder/Hintergrundbilder/Arch1.jpg
 
 # set powersavings for display:
 #exec --no-startup-id xset s 480 dpms 600 600 600
@@ -440,7 +423,7 @@ exec --no-startup-id /usr/bin/dunst
 
 # Autostart apps as you like
 #exec --no-startup-id sleep 2 && xfce4-terminal
-#exec --no-startup-id sleep 7 && firefox
+#exec --no-startup-id sleep 7 && vivaldi
 #exec --no-startup-id sleep 3 && thunar
 
 ###############
@@ -452,14 +435,17 @@ exec xrandr --output eDP-1 --primary
 # if you do not use dex: exec --no-startup-id dex --autostart --environment i3
 # you need to have tray apps started manually one by one:
 
-# start blueberry app for managing bluetooth devices from tray:
-exec --no-startup-id blueberry-tray
-
 # networkmanager-applet
 exec --no-startup-id nm-applet
 
-# clipman-applet, disable when using xfce4-clipman-plugin
-#exec --no-startup-id xfce4-clipman
+# start blueberry app for managing bluetooth devices from tray:
+exec --no-startup-id blueberry-tray
+
+# clipman-applet, disable when using xfce4-clipman-plugin on xfce4-panel
+exec --no-startup-id xfce4-clipman
+
+# notes in tray, pretty cool
+exec --no-startup-id xfce4-notes
 
 # caffeine tray to keep computer awake
 exec --no-startup-id caffeine-indicator
@@ -469,23 +455,16 @@ exec --no-startup-id caffeine-indicator
 ##################
 
 # set floating (nontiling) for apps needing it
+# run "xprop | grep CLASS" and click on the window
 for_window [class="Yad" instance="yad"] floating enable
-for_window [class="Galculator" instance="galculator"] floating enable
 for_window [class="kcalc" instance="kcalc"] floating enable
 for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
-for_window [class="plasmashell" instance="plasmashell"] floating enable
-
-# run xprop for window name
-
-# set floating (nontiling) for special apps
-for_window [class="Xsane" instance="xsane"] floating enable
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 for_window [class="Oblogout" instance="oblogout"] floating enable
-for_window [class="qt5ct" instance="qt5ct"] floating enable
-for_window [class="Blueberry.py" instance="blueberry.py"] floating enable
 for_window [class="Bluetooth-sendto" instance="bluetooth-sendto"] floating enable
 for_window [class="Pamac-manager"] floating enable
 for_window [window_role="About"] floating enable
+for_window [class="Xfce4-clipman-history" instance="xfce4-clipman-history"] floating enable
+for_window [class="pwvucontrol" instance="pwvucontrol"] floating enable
 
 # set border of floating window
 #for_window [class="urxvt"] border pixel 1
@@ -524,37 +503,53 @@ client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 ############################################
 # bar settings (input comes from i3blocks) #
 ############################################
-exec --no-startup-id xfce4-panel
+
+# im using polybar
+# Terminate already running bar instances
+# If all your bars have ipc enabled, you can use 
+exec_always polybar-msg cmd quit
+# Otherwise you can use the nuclear option:
+# exec_always killall -q polybar
+# this plus sleep 1 makes it so that upon restarting i3 polybar will also be restarted
+exec_always --no-startup-id sleep 1 && polybar main
+exec_always --no-startup-id sleep 1 && polybar second
+exec_always --no-startup-id sleep 1 && polybar third
+# idk if it is possible to make sleep lower than one and not zero, but sleep is important else the polybars wont all be displayed
+
+# Xfce4-panel
+#exec --no-startup-id xfce4-panel
+
 # Start i3bar to display a workspace bar
 # (plus the system information i3status finds out, if available)
-bar {
-		bindsym button3 exec --no-startup-id jgmenu_run
-		font pango: Monocraft Regular 10
-		status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	    	position bottom
+## is the config i used to have b4 switching to polybar
+##bar {
+##		bindsym button3 exec --no-startup-id jgmenu_run
+##		font pango: Monocraft Regular 10
+##		status_command i3blocks -c ~/.config/i3/i3blocks.conf
+##	    	position bottom
 #	    	i3bar_command i3bar --transparency
 # it could be that you have no primary display set: set one (xrandr --output <output> --primary)
 # reference: https://i3wm.org/docs/userguide.html#_tray_output
-		    tray_output primary
-		    tray_padding 0
+##		    tray_output primary
+##		    tray_padding 0
 
 # When strip_workspace_numbers is set to yes,
 # any workspace that has a name of the form
 # “[n][:][NAME]” will display only the name.
-strip_workspace_numbers yes
-##strip_workspace_name no
+##strip_workspace_numbers yes
+#strip_workspace_name no
 
-		    colors {
-		    separator          $purple
-		    background         #000000
-		    statusline         $white
+##		    colors {
+##		    separator          $purple
+##		    background         #000000
+##		    statusline         $white
 #                          		border 		        bg		txt		indicator
-		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
-		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
-		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
-		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
-	}
-}
+##		focused_workspace	$mediumgrey	   	$grey		$darkgrey	$purple
+##		active_workspace	$lightblue      	$mediumgrey	$darkgrey	$purple
+##		inactive_workspace	$darkgrey   		$darkgrey	$grey		$purple
+##		urgent_workspace	$urgentred	    	$urgentred	$white		$purple
+##	}
+##}
 
 # you can add different bars for multidisplay setups on each display:
 # set output HDMI-0 to the display you want the bar, --transparency can be set.
@@ -599,19 +594,44 @@ bindsym $mod+d exec rofi -show drun
 
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
-bindsym F9 exec rofi -modi drun -show drun \
-		-config ~/.config/rofi/rofidmenu.rasi
+#bindsym F9 exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
 
 ## rofi bindings for window menu ($mod+t /F10 optional disabled)
 
 bindsym $mod+t exec rofi -show window
 
-#bindsym F10 exec rofi -show window \
-#		-config ~/.config/rofi/rofidmenu.rasi
+bindsym F10 exec rofi -show window \
+		-config ~/.config/rofi/rofidmenu.rasi
 
-## rofi bindings to manage clipboard (install rofi-greenclip from the AUR)
+#####################
+# compositor: picom #
+#####################
 
-#exec --no-startup-id greenclip daemon>/dev/null
-#bindsym $mod+c exec --no-startup-id rofi -modi "clipboard:greenclip print" -show clipboard \
-#		-config ~/.config/rofi/rofidmenu.rasi
+# transparency
+# uncomment one of them to be used
+# options could need changes, related to used GPU and drivers.
+# to find the right setting consult the archwiki or ask at the forum.
+#
+# xcompmgr: https://wiki.archlinux.org/title/Xcompmgr
+# manpage: https://man.archlinux.org/man/xcompmgr.1.en
+# install xcompmgr package to use it (yay -S xcompmgr)
+#exec --no-startup-id xcompmgr -C -n &
+# or an more specialized config like this:
+#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
+#
+# or:
+#
+# picom: https://wiki.archlinux.org/title/Picom
+# manpage: https://man.archlinux.org/man/picom.1.en
+# The default configuration is available in /etc/xdg/picom.conf 
+# For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
+# install picom package (yay -S picom)
 
+# picom by pijulius (so it has animations):
+# https://github.com/pijulius/picom
+
+# start using default config 
+exec_always --no-startup-id picom --animations -b
+
+# for custom config:
+#exec_always --no-startup-id picom --config  ~/.config/picom.conf
