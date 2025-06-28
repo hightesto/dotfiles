@@ -66,6 +66,12 @@ then
 #    exit 1
 fi
 
+if ! command -v xclickroot >/dev/null 2>&1
+then
+    echo "xclickroot could not be found"
+#    exit 1
+fi
+
 # now this is the real installation
 cd dotfiles
 cp -irvf config/* ~/.config
