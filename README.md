@@ -24,6 +24,7 @@ dependencies:
 - xrandr
 - [Monocraft](https://github.com/IdreesInc/Monocraft) (or change the font in the i3 config)
 - rofi (alternatively dmenu)
+- xclickroot
 
 optional but cool:
 =
