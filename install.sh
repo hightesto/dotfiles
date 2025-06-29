@@ -14,9 +14,9 @@ then
 #    exit 1
 fi
 
-if ! command -v i3-auto-layout >/dev/null 2>&1
+if ! command -v autotiling >/dev/null 2>&1
 then
-    echo "i3-auto-layout could not be found"
+    echo "autotiling could not be found"
 #    exit 1
 fi
 
@@ -49,9 +49,9 @@ then
 #    exit 1
 fi
 
-if ! command -v xset >/dev/null 2>&1
+if ! command -v dunst >/dev/null 2>&1
 then
-    echo "nitrogen could not be found"
+    echo "dunst could not be found"
 #    exit 1
 fi
 
@@ -69,6 +69,18 @@ fi
 if ! command -v xclickroot >/dev/null 2>&1
 then
     echo "xclickroot could not be found"
+#    exit 1
+fi
+
+if ! command -v jgmenu >/dev/null 2>&1
+then
+    echo "jgmenu could not be found"
+#    exit 1
+fi
+
+if ! command -v oblogout >/dev/null 2>&1
+then
+    echo "oblogout could not be found"
 #    exit 1
 fi
 
