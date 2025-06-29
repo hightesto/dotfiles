@@ -14,7 +14,6 @@ installation:
 dependencies:
 =
 - i3-wm (with i3-gaps)
-- [i3-auto-layout](https://github.com/chmln/i3-auto-layout)
 - [picom (from FT-Labs so it has animations)](https://github.com/ft-labs/picom) (AUR: picom-ftlabs-git)
 - gnome-polkit
 - playerctl
