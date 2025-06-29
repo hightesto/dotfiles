@@ -26,7 +26,7 @@ dependencies:
 - xclickroot
 - jgmenu
 - oblogout
-- i3-auto-layout
+- autotiling
 
 optional but cool:
 =
