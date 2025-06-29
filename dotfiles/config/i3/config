@@ -2,14 +2,11 @@
 # config starts here: #
 #######################
 
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
+# Font for window titles. 
 # font must be in /usr/share/fonts
 font pango: Monocraft Regular 10
 
-# set the mod key to the winkey:
+# set the mod key to the super key:
 set $mod Mod4
 
 #####################
@@ -31,9 +28,6 @@ workspace_layout default
 # misc: #
 #########
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
@@ -43,11 +37,17 @@ exec --no-startup-id xrdb -merge ~/.Xresources
 exec --no-startup-id export XCURSOR_SIZE=16
 exec --no-startup-id export XCURSOR_THEME=Adwaita
 
-# auto tiling and layout (pretty cool)
-exec_always --no-startup-id i3-auto-layout
+# auto tiling script
+# you can use this with exec_always, I don't
+exec --no-startup-id autotiling
 
 # xclickroot
 exec --no-startup-id xclickroot -r jgmenu_run
+exec --no-startup-id xclickroot -m rofi -show drun
+
+# touchpad settings
+exec xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "Tapping Enabled" 1
+exec xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "Natural Scrolling Enabled" 1
 
 ##############################
 # extra options for windows: #
@@ -182,15 +182,12 @@ bindsym $mod+Return exec xfce4-terminal
 
 # open a file explorer
 bindsym $mod+e exec thunar
-# install gvfs, gvfs-mtp, thunar-volman, thunar-media-tags-plugin, thunar-archive-plugin packages for best experience
+# install gvfs, gvfs-mtp (for transfering files between the pc and an android phone), thunar-volman, thunar-media-tags-plugin, thunar-archive-plugin packages for best experience
 
 bindsym $mod+m exec multimc
 
-# open i3 config file with Visual Studio Code OSS
+# open i3 config file with Code OSS
 bindsym $mod+i exec code-oss ~/.config/i3/config
-
-# open i3blocks config file with Visual Studio Code OSS
-bindsym $mod+Shift+i exec code-oss ~/.config/i3/i3blocks.conf
 
 # kill focused window
 bindsym $mod+q kill
@@ -200,14 +197,12 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Escape exec oblogout
 bindsym $mod+F8 exec systemctl suspend
 
-# jgmenu
-bindsym $mod+j exec --no-startup-id jgmenu_run
-
 # Lock the system
 # lock with a picture:
-#bindsym $mod+l exec i3lock -i  ~/.config/i3/i3-lock-screen.png -p default|win -t
+# both of these stupid ass methods don't work for me
+#bindsym $mod+l exec i3lock -i  ~/.config/i3/bg.png -p default|win -t
 # lock by blurring the screen:
-bindsym $mod+l exec xtrlock &
+#bindsym $mod+l exec xtrlock &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -225,6 +220,7 @@ bindsym $mod+F1 exec ~/.config/i3/scripts/keyhint-2
 #bindsym XF86MonBrightnessUp exec xbacklight +10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 #bindsym XF86MonBrightnessDown exec xbacklight -10 && notify-send "Brightness - $(xbacklight -get | cut -d '.' -f 1)%"
 # Backlight setting using dunst osc
+# please ignore the bar being full at 100, normal backlights go up to 255
 bindsym XF86MonBrightnessUp exec ~/.config/i3/scripts/volume_brightness.sh brightness_up
 bindsym XF86MonBrightnessDown exec ~/.config/i3/scripts/volume_brightness.sh brightness_down
 
@@ -292,6 +288,10 @@ bindsym $mod+Shift+n exec ~/.config/i3/scripts/empty_workspace
 # Multimedia Keys
 
 # volume
+# use meta keys without showing osc
+#bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 5%+ && pkill -RTMIN+1 i3blocks
+#bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 5%- && pkill -RTMIN+1 i3blocks
+# use meta keys showing osc using dunst
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_down
 
@@ -300,6 +300,8 @@ bindsym $mod+XF86AudioRaiseVolume exec amixer -D pulse sset Master 1%+ && pkill 
 bindsym $mod+XF86AudioLowerVolume exec amixer -D pulse sset Master 1%- && pkill -RTMIN+1 i3blocks
 
 # mute
+#bindsym XF86AudioMute exec amixer sset Master toggle && killall -USR1 i3blocks
+# use meta keys showing osc using dunst
 bindsym XF86AudioMute exec --no-startup-id ~/.config/i3/scripts/volume_brightness.sh volume_mute
 
 # mic mute toggle
@@ -364,7 +366,6 @@ exec --no-startup-id dex --autostart --environment i3
 
 # num lock activated
 #exec --no-startup-id numlockx on
-# i have mine default on on by sddm
 
 # configure multiple keyboard layouts and hotkey to switch (Alt+CAPSLOCK in this example)
 #exec --no-startup-id setxkbmap -layout 'us,sk' -variant altgr-intl,qwerty -option 'grp:alt_caps_toggle'
@@ -376,12 +377,10 @@ exec --no-startup-id dex --autostart --environment i3
 # uncomment the next line, use arandr to setup displays and save the file as monitor:
 exec_always --no-startup-id ~/.screenlayout/monitor.sh
 
-# set wallpaper
+# set wallpaper with nitrogen (configure in app)
 exec_always --no-startup-id sleep 2 && nitrogen --restore
-#exec --no-startup-id sleep 1 && feh --bg-scale ~/Bilder/Hintergrundbilder/Arch1.jpg
-
-# set powersavings for display:
-#exec --no-startup-id xset s 480 dpms 600 600 600
+# alternatively with feh
+#exec --no-startup-id sleep 1 && feh --bg-scale ~/.config/i3/bg.png
 
 # disable power saving (for example if using xscreensaver)
 exec --no-startup-id xset -dpms
@@ -399,30 +398,15 @@ exec --no-startup-id xscreensaver --no-splash
 # dunst config used ~/.config/dunst/dunstrc
 # set alternative config if needed:
 #exec --no-startup-id /usr/bin/dunst --config ~/.config/dunst/dunstrc
-# may yneed to run dbus-launch explicitly: 
+# may need to run dbus-launch explicitly: 
 #exec --no-startup-id dbus-launch /usr/bin/dunst
 exec --no-startup-id /usr/bin/dunst
-# alternative if you installed aside with XFCE4:
-# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
-
-# autotiling script
-# https://github.com/nwg-piotr/autotiling
-# `yay -S autotiling ;) (it is in AUR)
-#exec_always --no-startup-id autotiling
-
-# Autostart apps as you like
-#exec --no-startup-id sleep 2 && xfce4-terminal
-#exec --no-startup-id sleep 7 && vivaldi
-#exec --no-startup-id sleep 3 && thunar
 
 ###############
 # system tray #
 ###############
 
 exec xrandr --output eDP-1 --primary
-
-# if you do not use dex: exec --no-startup-id dex --autostart --environment i3
-# you need to have tray apps started manually one by one:
 
 # networkmanager-applet
 exec --no-startup-id nm-applet
@@ -456,7 +440,7 @@ for_window [class="Xfce4-clipman-history" instance="xfce4-clipman-history"] floa
 for_window [class="pwvucontrol" instance="pwvucontrol"] floating enable
 
 # set border of floating window
-#for_window [class="urxvt"] border pixel 1
+#for_window [class=".*"] border pixel 2
 
 # set size of floating window
 #for_window [window_role="(?i)GtkFileChooserDialog"] resize set 640 480 #to set size of file choose dialog
@@ -485,14 +469,15 @@ set $yellowbrown	#e1b700
 # define colors for windows:
 #class		        	border		bground		text		indicator	child_border
 client.focused		    	$lightblue	$darkblue	$white		$mediumgrey	$mediumgrey
-client.unfocused	    	$darkblue	$darkblue	$grey		$darkgrey	$darkgrey
-client.focused_inactive		$darkblue	$darkblue	$grey		$black		$black
+client.unfocused	    	$lightblue	$darkblue	$grey		$darkgrey	$darkgrey
+client.focused_inactive		$lightblue	$darkblue	$grey		$black		$black
 client.urgent		    	$urgentred	$urgentred	$white		$yellowbrown	$yellowbrown
 
-###########
-# polybar #
-###########
+############################################
+# bar settings (input comes from i3blocks) #
+############################################
 
+# im using polybar
 # Terminate already running bar instances
 # If all your bars have ipc enabled, you can use 
 exec_always polybar-msg cmd quit
@@ -508,17 +493,17 @@ exec_always --no-startup-id sleep 1 && polybar third
 # Application menu handled by rofi: #
 #####################################
 
-## rofi bindings fancy application menu ($mod+d /F9 optional disabled)
+# rofi bindings fancy application menu ($mod+d /F9 optional disabled)
 
 bindsym $mod+d exec rofi -show drun
 
-## standart dmenu
+# standard dmenu
 
 bindsym $mod+Shift+d exec --no-startup-id dmenu_run
 
 #bindsym F9 exec rofi -modi drun -show drun -config ~/.config/rofi/rofidmenu.rasi
 
-## rofi bindings for window menu ($mod+t /F10 optional disabled)
+# rofi bindings for window menu ($mod+t /F10 optional disabled)
 
 bindsym $mod+t exec rofi -show window
 
@@ -528,26 +513,6 @@ bindsym F10 exec rofi -show window \
 #####################
 # compositor: picom #
 #####################
-
-# transparency
-# uncomment one of them to be used
-# options could need changes, related to used GPU and drivers.
-# to find the right setting consult the archwiki or ask at the forum.
-#
-# xcompmgr: https://wiki.archlinux.org/title/Xcompmgr
-# manpage: https://man.archlinux.org/man/xcompmgr.1.en
-# install xcompmgr package to use it (yay -S xcompmgr)
-#exec --no-startup-id xcompmgr -C -n &
-# or an more specialized config like this:
-#exec --no-startup-id xcompmgr -c -C -t-5 -l-5 -r4.2 -o.55 &
-#
-# or:
-#
-# picom: https://wiki.archlinux.org/title/Picom
-# manpage: https://man.archlinux.org/man/picom.1.en
-# The default configuration is available in /etc/xdg/picom.conf 
-# For modifications, it can be copied to ~/.config/picom/picom.conf or ~/.config/picom.conf
-# install picom package (yay -S picom)
 
 # picom by pijulius (so it has animations):
 # https://github.com/pijulius/picom
