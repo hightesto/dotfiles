@@ -46,8 +46,9 @@ exec --no-startup-id xclickroot -r jgmenu_run
 exec --no-startup-id xclickroot -m rofi -show drun
 
 # touchpad settings
-exec xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "Tapping Enabled" 1
-exec xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "Natural Scrolling Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Tapping Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Middle Emulation Enabled" 1
 
 ##############################
 # extra options for windows: #
