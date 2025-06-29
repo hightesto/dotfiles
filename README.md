@@ -14,7 +14,6 @@ installation:
 dependencies:
 =
 - i3-wm (with i3-gaps)
-- i3blocks
 - [i3-auto-layout](https://github.com/chmln/i3-auto-layout)
 - [picom (from FT-Labs so it has animations)](https://github.com/ft-labs/picom) (AUR: picom-ftlabs-git)
 - gnome-polkit
@@ -25,24 +24,28 @@ dependencies:
 - [Monocraft](https://github.com/IdreesInc/Monocraft) (or change the font in the i3 config)
 - rofi (alternatively dmenu)
 - xclickroot
+- jgmenu
+- oblogout
+- i3-auto-layout
 
 optional but cool:
 =
 - arandr (to edit monitor.sh and change monitor layout)
-- blueberry-tray
-- oblogout (for a nice logout menu)
+- blueberry-tray (for bluetooth)
+- kdocker (minimize programs to the tray)
 - scrot (for screenshots)
-- networkmanager
+- networkmanager (for wifi and ethernet)
 - brightnessctl (if you have a laptop)
-- dex
+- dex (if you have programs using /etc/xdg/autostart)
 - xset
 - xscreensaver
-- xss-lock
+- xfce4-clipman-plugin (clipboard)
+- xfce4-notes-plugin (notes in tray)
+- caffeine (keep computer awake)
+- if you use thunar: gvfs, thunar-volman, gvfs-mtp (for phone data transfer), thunar-media-tags-plugin, thunar-archive-plugin (these ensure the best experience with thunar)
 - xtrlock
-- xfce4-clipman-plugin
-- xfce4-notes-plugin
-- if you use thunar: gfvs, thunar-volman
-- i3lock
+- xsslock
+- i3lock (these are all some locks, you don't really need any of these)
 
 other things:
 =
@@ -51,4 +54,4 @@ other things:
 
 credits:
 =
-- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me
+- scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
