@@ -26,6 +26,8 @@ dependencies:
 - jgmenu
 - oblogout
 - autotiling
+- xss-lock
+- xscreensaver
 
 optional but cool:
 =
@@ -37,14 +39,10 @@ optional but cool:
 - brightnessctl (if you have a laptop)
 - dex (if you have programs using /etc/xdg/autostart)
 - xset
-- xscreensaver
 - xfce4-clipman-plugin (clipboard)
 - xfce4-notes-plugin (notes in tray)
 - caffeine (keep computer awake)
 - if you use thunar: gvfs, thunar-volman, gvfs-mtp (for phone data transfer), thunar-media-tags-plugin, thunar-archive-plugin (these ensure the best experience with thunar)
-- xtrlock
-- xsslock
-- i3lock (these are all some locks, you don't really need any of these)
 
 other things:
 =
