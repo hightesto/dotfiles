@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Welcome to the HIGHTESTO dotfiles installer!"
+
 # sudo check
 if [[ $EUID -ne 0 ]]; then
    echo "This script has to be run with root (sudo)!"
@@ -82,6 +84,27 @@ if ! command -v oblogout >/dev/null 2>&1
 then
     echo "oblogout could not be found"
 #    exit 1
+fi
+
+if ! command -v xss-lock >/dev/null 2>&1
+then
+    echo "xss-lock could not be found"
+#    exit 1
+fi
+
+if ! command -v xscreensaver >/dev/null 2>&1
+then
+    echo "xscreensaver could not be found"
+#    exit 1
+fi
+
+# confirmation
+echo "Do you want to continue and install the dotfiles? [y/n]"
+read yesorno
+if [[ ! $yesorno == y]]
+then
+   echo "Installer quit."
+   exit 1
 fi
 
 # now this is the real installation
