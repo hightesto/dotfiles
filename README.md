@@ -57,4 +57,3 @@ other stuff I use:
 =
 - [MineGrub Menu](https://github.com/Lxtharia/double-minegrub-menu)
 - [MineSDDM](https://github.com/Davi-S/sddm-theme-minesddm)
-- [Minecraft Plymouth Theme](https://github.com/nikp123/minecraft-plymouth-theme/tree/main)
