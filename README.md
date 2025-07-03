@@ -42,7 +42,7 @@ optional but cool:
 - xfce4-clipman-plugin (clipboard)
 - xfce4-notes-plugin (notes in tray)
 - caffeine (keep computer awake)
-- if you use thunar: gvfs, thunar-volman, gvfs-mtp (for phone data transfer), thunar-media-tags-plugin, thunar-archive-plugin (these ensure the best experience with thunar)
+- if you use thunar: gvfs, thunar-volman, gvfs-mtp (for phone data transfer), thunar-media-tags-plugin, thunar-archive-plugin (these ensure the best experience™ with thunar)
 
 other things:
 =
