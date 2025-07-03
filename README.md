@@ -52,3 +52,9 @@ other things:
 credits:
 =
 - scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
+
+other stuff I use:
+=
+- [MineGrub Menu](https://github.com/Lxtharia/double-minegrub-menu)
+- [MineSDDM](https://github.com/Davi-S/sddm-theme-minesddm)
+- [Minecraft Plymouth Theme](https://github.com/nikp123/minecraft-plymouth-theme/tree/main)
