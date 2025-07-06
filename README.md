@@ -1,4 +1,4 @@
-![title](https://raw.githubusercontent.com/hightesto/dotfiles/refs/heads/main/assets/title.png)
+![title](https://raw.githubusercontent.com/hightesto/dotfiles/refs/heads/main/assets/title2.png)
 
 installation:
 =
