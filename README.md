@@ -1,4 +1,4 @@
-My dotfiles for (Black)Arch Linux
+.dotfiles
 
 installation:
 =
@@ -52,8 +52,10 @@ other things:
 credits:
 =
 - scrips in `~/.config/i3/scripts/` (except `toggle_touchpad.sh`) made by [EndeavourOS i3](https://github.com/endeavouros-team/endeavouros-i3wm-setup) (and edited by me)
+- `~/.p10k.zsh` by [romkatv's Powerlevel10k](https://github.com/romkatv/powerlevel10k)
 
 other stuff I use:
 =
 - [MineGrub Menu](https://github.com/Lxtharia/double-minegrub-menu)
 - [MineSDDM](https://github.com/Davi-S/sddm-theme-minesddm)
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k)
