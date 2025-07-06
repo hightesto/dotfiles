@@ -8,6 +8,13 @@ if [[ $EUID -ne 0 ]]; then
    exit 1
 fi
 
+# rename check
+if ! command -v rename >/dev/null 2>&1
+then
+    echo "command 'rename' could not be found"
+    exit 1
+fi
+
 
 # application check
 if ! command -v i3 >/dev/null 2>&1
@@ -112,3 +119,8 @@ cd dotfiles
 cp -irvf config/* ~/.config
 cp -irvf etc/* /etc
 cp -irvf usr/* /usr
+cp -irvf userdir/* ~
+cd ~
+rename X .X Xresources
+rename p .p p10k.zsh
+rename z .z zshrc
