@@ -28,9 +28,10 @@ workspace_layout default
 # misc: #
 #########
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# xss-lock grabs a logind suspend inhibit lock and will use xscreensaver to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# i don't like i3lock
+exec_always --no-startup-id xss-lock --transfer-sleep-lock -- xscreensaver --nofork
 
 # mouse cursor with x
 exec --no-startup-id xrdb -merge ~/.Xresources
@@ -44,11 +45,6 @@ exec --no-startup-id autotiling
 # xclickroot
 exec --no-startup-id xclickroot -r jgmenu_run
 exec --no-startup-id xclickroot -m rofi -show drun
-
-# touchpad settings
-exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Tapping Enabled" 1
-exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Natural Scrolling Enabled" 1
-exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Middle Emulation Enabled" 1
 
 ##############################
 # extra options for windows: #
@@ -179,7 +175,7 @@ bindsym $mod+r mode "resize"
 ###############
 
 # start a terminal
-bindsym $mod+Return exec xfce4-terminal
+bindsym $mod+Return exec kitty
 
 # open a file explorer
 bindsym $mod+e exec thunar
@@ -199,11 +195,7 @@ bindsym $mod+Escape exec oblogout
 bindsym $mod+F8 exec systemctl suspend
 
 # Lock the system
-# lock with a picture:
-# both of these stupid ass methods don't work for me
-#bindsym $mod+l exec i3lock -i  ~/.config/i3/bg.png -p default|win -t
-# lock by blurring the screen:
-#bindsym $mod+l exec xtrlock &
+bindsym $mod+l xtrlock &
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -523,3 +515,12 @@ exec_always --no-startup-id picom --animations -b
 
 # for custom config:
 #exec_always --no-startup-id picom --config  ~/.config/picom.conf
+
+#####################
+# touchpad settings #
+#####################
+
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Tapping Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Natural Scrolling Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Middle Emulation Enabled" 1
+exec_always xinput set-prop "SYNA3602:00 0911:5288 Touchpad" "libinput Disable While Typing Enabled" 0
