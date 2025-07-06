@@ -46,7 +46,7 @@ optional but cool:
 
 customization:
 =
-https://github.com/hightesto/dotfiles/wiki/Customization
+https://github.com/hightesto/dotfiles/wiki
 
 
 other things:
