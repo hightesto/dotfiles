@@ -1,4 +1,4 @@
-.dotfiles
+![title](https://raw.githubusercontent.com/hightesto/dotfiles/refs/heads/main/assets/title.png)
 
 installation:
 =
