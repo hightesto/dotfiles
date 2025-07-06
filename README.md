@@ -1,5 +1,7 @@
 ![title](https://raw.githubusercontent.com/hightesto/dotfiles/refs/heads/main/assets/title2.png) ![image](https://github.com/user-attachments/assets/beab7b2d-4312-442a-add8-3c56448e5500)
 
+https://hightesto.github.io/dotfiles
+
 installation:
 =
 - clone the repo
