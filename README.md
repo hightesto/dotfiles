@@ -44,6 +44,11 @@ optional but cool:
 - caffeine (keep computer awake)
 - if you use thunar: gvfs, thunar-volman, gvfs-mtp (for phone data transfer), thunar-media-tags-plugin, thunar-archive-plugin (these ensure the best experience™ with thunar)
 
+customization:
+=
+https://github.com/hightesto/dotfiles/wiki/Customization
+
+
 other things:
 =
 - edit the # system tray # in the `~/.config/i3/config` and change the primary display (`exec xrandr --output eDP-1 --primary`) to your display (e.g. HDMI-1 instead of eDP-1)
