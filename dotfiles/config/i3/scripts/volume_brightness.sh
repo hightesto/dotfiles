@@ -1,13 +1,14 @@
 #!/bin/bash
 # original source: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
 
-# taken from here: https://gitlab.com/Nmoleo/i3-volume-brightness-indicator
+# edited by me
 
 # See README.md for usage instructions
 bar_color="#7f7fff"
 volume_step=1
 brightness_step=2.5
 max_volume=100
+max_brightness=255
 
 # Uses regex to get volume from pactl
 function get_volume {
@@ -51,10 +52,24 @@ function show_volume_notif {
 
 # Displays a brightness notification using dunstify
 function show_brightness_notif {
-    brightness=$(get_brightness)
+    # 1) raw brightness from 0–255
+    brightness_raw=$(brightnessctl g)
+
+    # 2) scale into a 0–100 range for the bar
+    brightness_pct=$(( brightness_raw * 100 / max_brightness ))
+
     get_brightness_icon
-    dunstify -t 1000 -r 2593 -u normal "$brightness_icon $brightness" -h int:value:$brightness -h string:hlcolor:$bar_color
+
+    # 3) display raw value, but use pct for the bar
+    dunstify \
+      -t 1000 \
+      -r 2593 \
+      -u normal \
+      "$brightness_icon  $brightness_raw" \
+      -h int:value:$brightness_pct \
+      -h string:hlcolor:$bar_color
 }
+7
 
 # Main function - Takes user input, "volume_up", "volume_down", "brightness_up", or "brightness_down"
 case $1 in
